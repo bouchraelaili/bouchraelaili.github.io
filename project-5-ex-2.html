@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>codage</title>
+
+</head>
+<body>
+	<table>
+		<tr>
+			<td>
+				<label>Ecrire le nombre en decimal :</label>
+			</td>
+			<td>
+				<input type="text" id="txtd">
+			</td>
+		<tr>
+			<td>
+				<input type="button" id="btnd" value="calcull" onclick="Convert()">
+					
+			</td>
+			<td>	
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Binaire :</label>
+			</td>
+			<td>
+				
+				<P id="b"></P>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Octal :</label>
+			</td>
+			<td>
+				
+				<P id="o"></P>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			   <label>Hexadecimal :</label>
+			</td>
+			<td>
+				<P id="h"></P>
+	 		</td>
+		</tr>
+		
+	</table>
+ <script type="text/javascript">
+
+		function Convert(){
+			//var decimal = document.getElementById('txtd').value;
+			/*var binaire = document.getElementById('txtb');
+			var octall = document.getElementById('txto');
+			var Hexadecimal = document.getElementById('txth');
+       
+         for (var i = Things.length - 1; i >= 0; i++) {
+         	Things[i]
+         }*/
+         	//var x= decimal; 
+         	var x = document.getElementById('txtd').value;
+	        var a="";
+	        while(x>0){
+	            a = x % 2 + a;
+	            x = Math.floor(x/2);
+                document.getElementById('b').innerHTML =  a;
+	        }
+
+     		//var y= decimal;
+            var b="";
+            var y = document.getElementById('txtd').value;
+	        while(y>0){
+	            b = y % 8 + b;
+	            y = Math.floor(y/8);
+                document.getElementById('o').innerHTML =  b;
+	        }
+
+
+	        
+	       /* while(z>0){
+	            c = z % 16 /*+ c;
+	            temp = z/16;
+	            z = Math.floor(z/16);
+	            console.log("temp " + temp);
+	            console.log("z " + z);
+
+	            console.log("c " + c);
+	            if( c==10){
+	            	document.getElementById('h').innerHTML =document.getElementById('h').value + "a";
+	            }
+	            else if( c==11){
+	            	document.getElementById('h').innerHTML =c + "b";
+	            }
+	            else if( c==12){
+	            	document.getElementById('h').innerHTML =c + "c";
+	            }
+	            else if( c==13){
+	            	document.getElementById('h').innerHTML =c + "d";
+	            }
+	            else if( c==14){
+	            	document.getElementById('h').innerHTML =c + "e";
+	            }
+	            else if( c==15){
+	            	document.getElementById('h').innerHTML =c + "f" ;
+	            }
+	            else if( c<10){
+	            	document.getElementById('h').innerHTML =" gggg" + c;
+	            }
+	            else{
+	            	alert('hola');
+	            }
+
+
+                
+	        }*/
+
+
+
+	        var resultat="";
+            var input = document.getElementById('txtd').value;
+            var hexa = {10 : "A" , 11 : "B", 12 : "C",13 : "D", 14 : "E", 15 : "F"};
+            while(input){
+            	 resultat += (input%16) >= 10 ? hexa[(input%16)] : (input%16);
+	            input = Math.floor(input/16);
+	            console.log("resultat " + resultat);
+            }
+
+            /*
+	        do{
+	            resultat += Math.floor(input%16) >= 10 ? hexa[Math.floor(input%16)] : Math.floor(input%16);
+	            input = input/16;
+	            console.log("resultat " + resultat);
+	            
+
+	        }while(input==0);*/
+
+	        document.getElementById('h').innerHTML = resultat.split('',resultat.length).reverse().toString().replace(/,/g,'');
+
+
+        }
+
+
+
+
+
+
+
+
+ </script>
+</body>
+</html>
